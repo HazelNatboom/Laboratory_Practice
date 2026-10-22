@@ -1,0 +1,143 @@
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\ccrKz85a.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"init.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/init.c"
+  20              		.section	.text.System_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	System_Init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	System_Init:
+  28              	.LFB130:
+   1:Core/Src/init.c **** #include "init.h"
+   2:Core/Src/init.c **** 
+   3:Core/Src/init.c **** void System_Init(void) {
+  29              		.loc 1 3 24 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+   4:Core/Src/init.c ****     // 1. Включаем тактирование порта GPIOB
+   5:Core/Src/init.c ****     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
+  34              		.loc 1 5 5 view .LVU1
+  35              		.loc 1 5 8 is_stmt 0 view .LVU2
+  36 0000 134A     		ldr	r2, .L2
+  37 0002 136B     		ldr	r3, [r2, #48]
+  38              		.loc 1 5 18 view .LVU3
+  39 0004 43F00203 		orr	r3, r3, #2
+  40 0008 1363     		str	r3, [r2, #48]
+   6:Core/Src/init.c **** 
+   7:Core/Src/init.c ****     // 2. Настройка пинов PB6, PB8, PB9 как выходы (светодиоды 2, 
+   8:Core/Src/init.c ****     // Очищаем биты конфигурации MODER для пинов 6, 8, 9
+   9:Core/Src/init.c ****     GPIOB->MODER &= ~((3U << (2 * 6)) | (3U << (2 * 8)) | (3U << (2 * 9)));
+  41              		.loc 1 9 5 is_stmt 1 view .LVU4
+  42              		.loc 1 9 10 is_stmt 0 view .LVU5
+  43 000a 124B     		ldr	r3, .L2+4
+  44 000c 1A68     		ldr	r2, [r3]
+  45              		.loc 1 9 18 view .LVU6
+  46 000e 22F47322 		bic	r2, r2, #995328
+  47 0012 1A60     		str	r2, [r3]
+  10:Core/Src/init.c ****     // Устанавливаем режим выхода (01)
+  11:Core/Src/init.c ****     GPIOB->MODER |=  ((1U << (2 * 6)) | (1U << (2 * 8)) | (1U << (2 * 9)));
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\ccrKz85a.s 			page 2
+
+
+  48              		.loc 1 11 5 is_stmt 1 view .LVU7
+  49              		.loc 1 11 10 is_stmt 0 view .LVU8
+  50 0014 1A68     		ldr	r2, [r3]
+  51              		.loc 1 11 18 view .LVU9
+  52 0016 42F4A222 		orr	r2, r2, #331776
+  53 001a 1A60     		str	r2, [r3]
+  12:Core/Src/init.c **** 
+  13:Core/Src/init.c ****     // 3. Настройка пина PB5 как вход с подтяжкой к питанию (
+  14:Core/Src/init.c ****     GPIOB->MODER &= ~(3U << (2 * 5)); // Режим входа (00)
+  54              		.loc 1 14 5 is_stmt 1 view .LVU10
+  55              		.loc 1 14 10 is_stmt 0 view .LVU11
+  56 001c 1A68     		ldr	r2, [r3]
+  57              		.loc 1 14 18 view .LVU12
+  58 001e 22F44062 		bic	r2, r2, #3072
+  59 0022 1A60     		str	r2, [r3]
+  15:Core/Src/init.c ****     GPIOB->PUPDR &= ~(3U << (2 * 5)); 
+  60              		.loc 1 15 5 is_stmt 1 view .LVU13
+  61              		.loc 1 15 10 is_stmt 0 view .LVU14
+  62 0024 DA68     		ldr	r2, [r3, #12]
+  63              		.loc 1 15 18 view .LVU15
+  64 0026 22F44062 		bic	r2, r2, #3072
+  65 002a DA60     		str	r2, [r3, #12]
+  16:Core/Src/init.c ****     GPIOB->PUPDR |=  (1U << (2 * 5)); // Pull-up (01)
+  66              		.loc 1 16 5 is_stmt 1 view .LVU16
+  67              		.loc 1 16 10 is_stmt 0 view .LVU17
+  68 002c DA68     		ldr	r2, [r3, #12]
+  69              		.loc 1 16 18 view .LVU18
+  70 002e 42F48062 		orr	r2, r2, #1024
+  71 0032 DA60     		str	r2, [r3, #12]
+  17:Core/Src/init.c **** 
+  18:Core/Src/init.c ****     // 4. Пин PB2 (Кнопка 1 + Светодиод 1) по умолчанию настраи
+  19:Core/Src/init.c ****     GPIOB->MODER &= ~(3U << (2 * 2)); // Вход
+  72              		.loc 1 19 5 is_stmt 1 view .LVU19
+  73              		.loc 1 19 10 is_stmt 0 view .LVU20
+  74 0034 1A68     		ldr	r2, [r3]
+  75              		.loc 1 19 18 view .LVU21
+  76 0036 22F03002 		bic	r2, r2, #48
+  77 003a 1A60     		str	r2, [r3]
+  20:Core/Src/init.c ****     GPIOB->PUPDR &= ~(3U << (2 * 2));
+  78              		.loc 1 20 5 is_stmt 1 view .LVU22
+  79              		.loc 1 20 10 is_stmt 0 view .LVU23
+  80 003c DA68     		ldr	r2, [r3, #12]
+  81              		.loc 1 20 18 view .LVU24
+  82 003e 22F03002 		bic	r2, r2, #48
+  83 0042 DA60     		str	r2, [r3, #12]
+  21:Core/Src/init.c ****     GPIOB->PUPDR |=  (1U << (2 * 2)); // Pull-up
+  84              		.loc 1 21 5 is_stmt 1 view .LVU25
+  85              		.loc 1 21 10 is_stmt 0 view .LVU26
+  86 0044 DA68     		ldr	r2, [r3, #12]
+  87              		.loc 1 21 18 view .LVU27
+  88 0046 42F01002 		orr	r2, r2, #16
+  89 004a DA60     		str	r2, [r3, #12]
+  22:Core/Src/init.c **** }...
+  90              		.loc 1 22 1 view .LVU28
+  91 004c 7047     		bx	lr
+  92              	.L3:
+  93 004e 00BF     		.align	2
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\ccrKz85a.s 			page 3
+
+
+  94              	.L2:
+  95 0050 00380240 		.word	1073887232
+  96 0054 00040240 		.word	1073873920
+  97              		.cfi_endproc
+  98              	.LFE130:
+ 100              		.text
+ 101              	.Letext0:
+ 102              		.file 2 "D:/VUZovskoe/TsMPT/Tools/arm-none-eabi/include/machine/_default_types.h"
+ 103              		.file 3 "D:/VUZovskoe/TsMPT/Tools/arm-none-eabi/include/sys/_stdint.h"
+ 104              		.file 4 "CMSIS/Devices/STM32F4xx/Inc/STM32F429xx/stm32f429xx.h"
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\ccrKz85a.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 init.c
+C:\Users\aleks\AppData\Local\Temp\ccrKz85a.s:21     .text.System_Init:00000000 $t
+C:\Users\aleks\AppData\Local\Temp\ccrKz85a.s:27     .text.System_Init:00000000 System_Init
+C:\Users\aleks\AppData\Local\Temp\ccrKz85a.s:95     .text.System_Init:00000050 $d
+
+NO UNDEFINED SYMBOLS

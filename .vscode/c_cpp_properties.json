@@ -3,7 +3,9 @@
         {
             "name": "STM32 F4",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/CMSIS/Devices/STM32F4xx/Inc",
+                "${workspaceFolder}/CMSIS/Include"
             ],
             "defines": [
                 "_DEBUG",

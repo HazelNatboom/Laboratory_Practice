@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aleks\AppData\Local\Temp\ccw2pOdE.s 			page 1
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -20,40 +20,522 @@ ARM GAS  C:\Users\aleks\AppData\Local\Temp\ccw2pOdE.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "Core/Src/main.c"
-  20              		.section	.text.main,"ax",%progbits
+  20              		.section	.text.delay,"ax",%progbits
   21              		.align	1
-  22              		.global	main
+  22              		.global	delay
   23              		.syntax unified
   24              		.thumb
   25              		.thumb_func
-  27              	main:
-  28              	.LFB0:
-   1:Core/Src/main.c **** int main(void){
-  29              		.loc 1 1 15 view -0
-  30              		.cfi_startproc
-  31              		@ Volatile: function does not return.
-  32              		@ args = 0, pretend = 0, frame = 0
+  27              	delay:
+  28              	.LVL0:
+  29              	.LFB130:
+   1:Core/Src/main.c **** #include <stdint.h>
+   2:Core/Src/main.c **** #include <init.h>
+   3:Core/Src/main.c **** #include "main.h"
+   4:Core/Src/main.c **** 
+   5:Core/Src/main.c **** void delay(volatile uint32_t count) {
+  30              		.loc 1 5 37 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
-  35              	.L2:
-   2:Core/Src/main.c ****     while(1){
-  36              		.loc 1 2 5 view .LVU1
-   3:Core/Src/main.c ****         
-   4:Core/Src/main.c ****     }
-  37              		.loc 1 4 5 view .LVU2
-   2:Core/Src/main.c ****     while(1){
-  38              		.loc 1 2 10 view .LVU3
-  39 0000 FEE7     		b	.L2
-  40              		.cfi_endproc
-  41              	.LFE0:
-  43              		.text
-  44              	.Letext0:
-ARM GAS  C:\Users\aleks\AppData\Local\Temp\ccw2pOdE.s 			page 2
+  35              		.loc 1 5 37 is_stmt 0 view .LVU1
+  36 0000 82B0     		sub	sp, sp, #8
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  39 0002 0190     		str	r0, [sp, #4]
+   6:Core/Src/main.c ****     while (count--) {
+  40              		.loc 1 6 5 is_stmt 1 view .LVU2
+  41              		.loc 1 6 11 is_stmt 0 view .LVU3
+  42 0004 00E0     		b	.L2
+  43              	.L3:
+   7:Core/Src/main.c ****         __NOP();
+  44              		.loc 1 7 9 is_stmt 1 view .LVU4
+  45              		.syntax unified
+  46              	@ 7 "Core/Src/main.c" 1
+  47 0006 00BF     		nop
+  48              	@ 0 "" 2
+  49              		.thumb
+  50              		.syntax unified
+  51              	.L2:
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 2
+
+
+   6:Core/Src/main.c ****     while (count--) {
+  52              		.loc 1 6 12 view .LVU5
+   6:Core/Src/main.c ****     while (count--) {
+  53              		.loc 1 6 17 is_stmt 0 view .LVU6
+  54 0008 019B     		ldr	r3, [sp, #4]
+  55 000a 5A1E     		subs	r2, r3, #1
+  56 000c 0192     		str	r2, [sp, #4]
+   6:Core/Src/main.c ****     while (count--) {
+  57              		.loc 1 6 12 view .LVU7
+  58 000e 002B     		cmp	r3, #0
+  59 0010 F9D1     		bne	.L3
+   8:Core/Src/main.c ****     }
+   9:Core/Src/main.c **** }
+  60              		.loc 1 9 1 view .LVU8
+  61 0012 02B0     		add	sp, sp, #8
+  62              	.LCFI1:
+  63              		.cfi_def_cfa_offset 0
+  64              		@ sp needed
+  65 0014 7047     		bx	lr
+  66              		.cfi_endproc
+  67              	.LFE130:
+  69              		.section	.text.main,"ax",%progbits
+  70              		.align	1
+  71              		.global	main
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  76              	main:
+  77              	.LFB131:
+  10:Core/Src/main.c **** 
+  11:Core/Src/main.c **** int main(void) {
+  78              		.loc 1 11 16 is_stmt 1 view -0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  83              	.LCFI2:
+  84              		.cfi_def_cfa_offset 32
+  85              		.cfi_offset 4, -32
+  86              		.cfi_offset 5, -28
+  87              		.cfi_offset 6, -24
+  88              		.cfi_offset 7, -20
+  89              		.cfi_offset 8, -16
+  90              		.cfi_offset 9, -12
+  91              		.cfi_offset 10, -8
+  92              		.cfi_offset 14, -4
+  12:Core/Src/main.c ****     System_Init();
+  93              		.loc 1 12 5 view .LVU10
+  94 0004 FFF7FEFF 		bl	System_Init
+  95              	.LVL1:
+  13:Core/Src/main.c **** 
+  14:Core/Src/main.c ****     // Переменные для Кнопки 2 (PB5) и светодиодов 2, 3, 4 (PB6, PB8
+  15:Core/Src/main.c ****     uint8_t seq_step = 0;          
+  96              		.loc 1 15 5 view .LVU11
+  16:Core/Src/main.c ****     uint8_t btn2_last = 1;         
+  97              		.loc 1 16 5 view .LVU12
+  17:Core/Src/main.c **** 
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 3
+
+
+  18:Core/Src/main.c ****     // Переменные для Кнопки 1 / Светодиода 1 (PB2)
+  19:Core/Src/main.c ****     uint32_t btn1_press_count = 0; 
+  98              		.loc 1 19 5 view .LVU13
+  20:Core/Src/main.c ****     uint8_t btn1_last = 1;         
+  99              		.loc 1 20 5 view .LVU14
+  21:Core/Src/main.c ****     uint8_t btn2_blocked = 0;      // Флаг блокировки Кнопки 2 (от Кнопк
+ 100              		.loc 1 21 5 view .LVU15
+  22:Core/Src/main.c ****     uint8_t led1_active_mode = 0;  // Состояние Светодиода 1 (0 - выкл, 1 - 
+ 101              		.loc 1 22 5 view .LVU16
+ 102              		.loc 1 22 13 is_stmt 0 view .LVU17
+ 103 0008 0027     		movs	r7, #0
+  21:Core/Src/main.c ****     uint8_t btn2_blocked = 0;      // Флаг блокировки Кнопки 2 (от Кнопк
+ 104              		.loc 1 21 13 view .LVU18
+ 105 000a B846     		mov	r8, r7
+  20:Core/Src/main.c ****     uint8_t btn1_last = 1;         
+ 106              		.loc 1 20 13 view .LVU19
+ 107 000c 0125     		movs	r5, #1
+  19:Core/Src/main.c ****     uint8_t btn1_last = 1;         
+ 108              		.loc 1 19 14 view .LVU20
+ 109 000e BA46     		mov	r10, r7
+  16:Core/Src/main.c **** 
+ 110              		.loc 1 16 13 view .LVU21
+ 111 0010 2E46     		mov	r6, r5
+  15:Core/Src/main.c ****     uint8_t btn2_last = 1;         
+ 112              		.loc 1 15 13 view .LVU22
+ 113 0012 B946     		mov	r9, r7
+ 114 0014 57E0     		b	.L12
+ 115              	.LVL2:
+ 116              	.L20:
+ 117              	.LBB2:
+  23:Core/Src/main.c **** 
+  24:Core/Src/main.c ****     while (1) {
+  25:Core/Src/main.c ****         // ==========================================
+  26:Core/Src/main.c ****         // 1. КНОПКА 1 (PB2) -> Управляет блокировкой Кнопки 2 и �
+  27:Core/Src/main.c ****         // ==========================================
+  28:Core/Src/main.c ****         GPIOB->MODER &= ~(3U << (2 * 2)); // Перевод PB2 в режим ВХОДА для о�
+  29:Core/Src/main.c ****         delay(1000); 
+  30:Core/Src/main.c ****         
+  31:Core/Src/main.c ****         uint8_t btn1_curr = (GPIOB->IDR & (1U << 2)) ? 1 : 0;
+  32:Core/Src/main.c ****         if (btn1_last == 1 && btn1_curr == 0) { // Нажатие Кнопки 1
+ 118              		.loc 1 32 28 discriminator 1 view .LVU23
+ 119 0016 002A     		cmp	r2, #0
+ 120 0018 65D1     		bne	.L6
+  33:Core/Src/main.c ****             delay(160000); // Антидребезг
+ 121              		.loc 1 33 13 is_stmt 1 view .LVU24
+ 122 001a 4448     		ldr	r0, .L22
+ 123 001c FFF7FEFF 		bl	delay
+ 124              	.LVL3:
+  34:Core/Src/main.c ****             GPIOB->MODER &= ~(3U << (2 * 2));
+ 125              		.loc 1 34 13 view .LVU25
+ 126              		.loc 1 34 18 is_stmt 0 view .LVU26
+ 127 0020 434B     		ldr	r3, .L22+4
+ 128 0022 1A68     		ldr	r2, [r3]
+ 129              		.loc 1 34 26 view .LVU27
+ 130 0024 22F03002 		bic	r2, r2, #48
+ 131 0028 1A60     		str	r2, [r3]
+  35:Core/Src/main.c ****             if ((GPIOB->IDR & (1U << 2)) == 0) {
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 4
+
+
+ 132              		.loc 1 35 13 is_stmt 1 view .LVU28
+ 133              		.loc 1 35 23 is_stmt 0 view .LVU29
+ 134 002a 1B69     		ldr	r3, [r3, #16]
+ 135              		.loc 1 35 16 view .LVU30
+ 136 002c 13F0040F 		tst	r3, #4
+ 137 0030 59D1     		bne	.L6
+  36:Core/Src/main.c ****                 btn1_press_count++; 
+ 138              		.loc 1 36 17 is_stmt 1 view .LVU31
+ 139              		.loc 1 36 33 is_stmt 0 view .LVU32
+ 140 0032 0AF1010A 		add	r10, r10, #1
+ 141              	.LVL4:
+  37:Core/Src/main.c ****                 
+  38:Core/Src/main.c ****                 // Каждые 5 нажатий Кнопки 1 переключаем режим
+  39:Core/Src/main.c ****                 if (btn1_press_count % 5 == 0) {
+ 142              		.loc 1 39 17 is_stmt 1 view .LVU33
+ 143              		.loc 1 39 38 is_stmt 0 view .LVU34
+ 144 0036 3F4B     		ldr	r3, .L22+8
+ 145 0038 A3FB0A23 		umull	r2, r3, r3, r10
+ 146 003c 23F00302 		bic	r2, r3, #3
+ 147 0040 02EB9303 		add	r3, r2, r3, lsr #2
+ 148              		.loc 1 39 20 view .LVU35
+ 149 0044 9A45     		cmp	r10, r3
+ 150 0046 4ED1     		bne	.L6
+  40:Core/Src/main.c ****                     btn2_blocked = !btn2_blocked;       // Отключаем/включаем Кн
+ 151              		.loc 1 40 21 is_stmt 1 view .LVU36
+ 152              		.loc 1 40 36 is_stmt 0 view .LVU37
+ 153 0048 88F00108 		eor	r8, r8, #1
+ 154              	.LVL5:
+  41:Core/Src/main.c ****                     led1_active_mode = !led1_active_mode; // Включаем/выключаем С
+ 155              		.loc 1 41 21 is_stmt 1 view .LVU38
+ 156              		.loc 1 41 40 is_stmt 0 view .LVU39
+ 157 004c 87F00107 		eor	r7, r7, #1
+ 158              	.LVL6:
+ 159              		.loc 1 41 40 view .LVU40
+ 160 0050 49E0     		b	.L6
+ 161              	.LVL7:
+ 162              	.L7:
+  42:Core/Src/main.c ****                 }
+  43:Core/Src/main.c ****             }
+  44:Core/Src/main.c ****         }
+  45:Core/Src/main.c ****         btn1_last = btn1_curr;
+  46:Core/Src/main.c **** 
+  47:Core/Src/main.c ****         // Управляем физическим состоянием пина PB2 (Светод�
+  48:Core/Src/main.c ****         if (led1_active_mode) {
+  49:Core/Src/main.c ****             GPIOB->MODER &= ~(3U << (2 * 2));
+  50:Core/Src/main.c ****             GPIOB->MODER |=  (1U << (2 * 2)); // Выход
+  51:Core/Src/main.c ****             GPIOB->ODR   |=  (1U << 2);       // Светодиод 1 горит
+  52:Core/Src/main.c ****         } else {
+  53:Core/Src/main.c ****             GPIOB->MODER &= ~(3U << (2 * 2)); // Вход (Светодиод 1 выключен)
+ 163              		.loc 1 53 13 is_stmt 1 view .LVU41
+ 164              		.loc 1 53 18 is_stmt 0 view .LVU42
+ 165 0052 374A     		ldr	r2, .L22+4
+ 166 0054 1368     		ldr	r3, [r2]
+ 167              		.loc 1 53 26 view .LVU43
+ 168 0056 23F03003 		bic	r3, r3, #48
+ 169 005a 1360     		str	r3, [r2]
+ 170 005c 52E0     		b	.L8
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 5
+
+
+ 171              	.LVL8:
+ 172              	.L21:
+ 173              	.LBB3:
+  54:Core/Src/main.c ****         }
+  55:Core/Src/main.c **** 
+  56:Core/Src/main.c **** 
+  57:Core/Src/main.c ****         // ==========================================
+  58:Core/Src/main.c ****         // 2. КНОПКА 2 (PB5) -> Накопительное включение светоди�
+  59:Core/Src/main.c ****         // ==========================================
+  60:Core/Src/main.c ****         if (btn2_blocked == 0) {
+  61:Core/Src/main.c ****             uint8_t btn2_curr = (GPIOB->IDR & (1U << 5)) ? 1 : 0;
+  62:Core/Src/main.c ****             if (btn2_last == 1 && btn2_curr == 0) { // Нажатие Кнопки 2
+ 174              		.loc 1 62 32 discriminator 1 view .LVU44
+ 175 005e 62BB     		cbnz	r2, .L14
+  63:Core/Src/main.c ****                 delay(160000); // Антидребезг
+ 176              		.loc 1 63 17 is_stmt 1 view .LVU45
+ 177 0060 3248     		ldr	r0, .L22
+ 178 0062 FFF7FEFF 		bl	delay
+ 179              	.LVL9:
+  64:Core/Src/main.c ****                 if ((GPIOB->IDR & (1U << 5)) == 0) {
+ 180              		.loc 1 64 17 view .LVU46
+ 181              		.loc 1 64 27 is_stmt 0 view .LVU47
+ 182 0066 324B     		ldr	r3, .L22+4
+ 183 0068 1B69     		ldr	r3, [r3, #16]
+ 184              		.loc 1 64 20 view .LVU48
+ 185 006a 13F0200F 		tst	r3, #32
+ 186 006e 56D1     		bne	.L15
+  65:Core/Src/main.c ****                     seq_step++;
+ 187              		.loc 1 65 21 is_stmt 1 view .LVU49
+ 188              		.loc 1 65 29 is_stmt 0 view .LVU50
+ 189 0070 09F10109 		add	r9, r9, #1
+ 190              	.LVL10:
+ 191              		.loc 1 65 29 view .LVU51
+ 192 0074 5FFA89F9 		uxtb	r9, r9
+ 193              	.LVL11:
+  66:Core/Src/main.c ****                     if (seq_step > 3) {
+ 194              		.loc 1 66 21 is_stmt 1 view .LVU52
+ 195              		.loc 1 66 24 is_stmt 0 view .LVU53
+ 196 0078 B9F1030F 		cmp	r9, #3
+ 197 007c 00D9     		bls	.L10
+  67:Core/Src/main.c ****                         seq_step = 1; 
+ 198              		.loc 1 67 34 view .LVU54
+ 199 007e B146     		mov	r9, r6
+ 200              	.LVL12:
+ 201              	.L10:
+  68:Core/Src/main.c ****                     }
+  69:Core/Src/main.c **** 
+  70:Core/Src/main.c ****                     // Гасим PB6, PB8, PB9 и накопительно зажигаем
+  71:Core/Src/main.c ****                     GPIOB->ODR &= ~((1U << 6) | (1U << 8) | (1U << 9));
+ 202              		.loc 1 71 21 is_stmt 1 view .LVU55
+ 203              		.loc 1 71 26 is_stmt 0 view .LVU56
+ 204 0080 2B4A     		ldr	r2, .L22+4
+ 205 0082 5369     		ldr	r3, [r2, #20]
+ 206              		.loc 1 71 32 view .LVU57
+ 207 0084 23F45073 		bic	r3, r3, #832
+ 208 0088 5361     		str	r3, [r2, #20]
+  72:Core/Src/main.c ****                     if (seq_step >= 1) GPIOB->ODR |= (1U << 6); // Светодиод 2
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 6
+
+
+ 209              		.loc 1 72 21 is_stmt 1 view .LVU58
+ 210              		.loc 1 72 24 is_stmt 0 view .LVU59
+ 211 008a B9F1000F 		cmp	r9, #0
+ 212 008e 0AD0     		beq	.L11
+ 213              		.loc 1 72 40 is_stmt 1 discriminator 1 view .LVU60
+ 214              		.loc 1 72 45 is_stmt 0 discriminator 1 view .LVU61
+ 215 0090 5369     		ldr	r3, [r2, #20]
+ 216              		.loc 1 72 51 discriminator 1 view .LVU62
+ 217 0092 43F04003 		orr	r3, r3, #64
+ 218 0096 5361     		str	r3, [r2, #20]
+  73:Core/Src/main.c ****                     if (seq_step >= 2) GPIOB->ODR |= (1U << 8); // Светодиод 3
+ 219              		.loc 1 73 21 is_stmt 1 view .LVU63
+ 220              		.loc 1 73 24 is_stmt 0 view .LVU64
+ 221 0098 B9F1010F 		cmp	r9, #1
+ 222 009c 41D9     		bls	.L17
+ 223              		.loc 1 73 40 is_stmt 1 discriminator 1 view .LVU65
+ 224              		.loc 1 73 45 is_stmt 0 discriminator 1 view .LVU66
+ 225 009e 5369     		ldr	r3, [r2, #20]
+ 226              		.loc 1 73 51 discriminator 1 view .LVU67
+ 227 00a0 43F48073 		orr	r3, r3, #256
+ 228 00a4 5361     		str	r3, [r2, #20]
+ 229              	.L11:
+  74:Core/Src/main.c ****                     if (seq_step >= 3) GPIOB->ODR |= (1U << 9); // Светодиод 4
+ 230              		.loc 1 74 21 is_stmt 1 view .LVU68
+ 231              		.loc 1 74 24 is_stmt 0 view .LVU69
+ 232 00a6 B9F1020F 		cmp	r9, #2
+ 233 00aa 3CD9     		bls	.L18
+ 234              		.loc 1 74 40 is_stmt 1 discriminator 1 view .LVU70
+ 235              		.loc 1 74 45 is_stmt 0 discriminator 1 view .LVU71
+ 236 00ac 204A     		ldr	r2, .L22+4
+ 237 00ae 5369     		ldr	r3, [r2, #20]
+ 238              		.loc 1 74 51 discriminator 1 view .LVU72
+ 239 00b0 43F40073 		orr	r3, r3, #512
+ 240 00b4 5361     		str	r3, [r2, #20]
+  75:Core/Src/main.c ****                 }
+  76:Core/Src/main.c ****             }
+  77:Core/Src/main.c ****             btn2_last = btn2_curr;
+ 241              		.loc 1 77 23 view .LVU73
+ 242 00b6 2E46     		mov	r6, r5
+ 243              	.LVL13:
+ 244              		.loc 1 77 23 view .LVU74
+ 245 00b8 00E0     		b	.L9
+ 246              	.LVL14:
+ 247              	.L14:
+ 248              		.loc 1 77 23 view .LVU75
+ 249 00ba 2E46     		mov	r6, r5
+ 250              	.LVL15:
+ 251              	.L9:
+ 252              		.loc 1 77 23 view .LVU76
+ 253              	.LBE3:
+  78:Core/Src/main.c ****         }
+  79:Core/Src/main.c **** 
+  80:Core/Src/main.c ****         delay(50000); 
+ 254              		.loc 1 80 9 is_stmt 1 view .LVU77
+ 255 00bc 4CF25030 		movw	r0, #50000
+ 256 00c0 FFF7FEFF 		bl	delay
+ 257              	.LVL16:
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 7
+
+
+ 258              	.LBE2:
+  24:Core/Src/main.c ****         // ==========================================
+ 259              		.loc 1 24 11 view .LVU78
+ 260              	.LBB5:
+  45:Core/Src/main.c **** 
+ 261              		.loc 1 45 19 is_stmt 0 view .LVU79
+ 262 00c4 2546     		mov	r5, r4
+ 263              	.LVL17:
+ 264              	.L12:
+  45:Core/Src/main.c **** 
+ 265              		.loc 1 45 19 view .LVU80
+ 266              	.LBE5:
+  24:Core/Src/main.c ****         // ==========================================
+ 267              		.loc 1 24 5 is_stmt 1 view .LVU81
+ 268              	.LBB6:
+  28:Core/Src/main.c ****         delay(1000); 
+ 269              		.loc 1 28 9 view .LVU82
+  28:Core/Src/main.c ****         delay(1000); 
+ 270              		.loc 1 28 14 is_stmt 0 view .LVU83
+ 271 00c6 1A4C     		ldr	r4, .L22+4
+ 272 00c8 2368     		ldr	r3, [r4]
+  28:Core/Src/main.c ****         delay(1000); 
+ 273              		.loc 1 28 22 view .LVU84
+ 274 00ca 23F03003 		bic	r3, r3, #48
+ 275 00ce 2360     		str	r3, [r4]
+  29:Core/Src/main.c ****         
+ 276              		.loc 1 29 9 is_stmt 1 view .LVU85
+ 277 00d0 4FF47A70 		mov	r0, #1000
+ 278 00d4 FFF7FEFF 		bl	delay
+ 279              	.LVL18:
+  31:Core/Src/main.c ****         if (btn1_last == 1 && btn1_curr == 0) { // Нажатие Кнопки 1
+ 280              		.loc 1 31 9 view .LVU86
+  31:Core/Src/main.c ****         if (btn1_last == 1 && btn1_curr == 0) { // Нажатие Кнопки 1
+ 281              		.loc 1 31 35 is_stmt 0 view .LVU87
+ 282 00d8 2469     		ldr	r4, [r4, #16]
+  31:Core/Src/main.c ****         if (btn1_last == 1 && btn1_curr == 0) { // Нажатие Кнопки 1
+ 283              		.loc 1 31 58 view .LVU88
+ 284 00da 04F00402 		and	r2, r4, #4
+ 285 00de C4F38004 		ubfx	r4, r4, #2, #1
+ 286              	.LVL19:
+  32:Core/Src/main.c ****             delay(160000); // Антидребезг
+ 287              		.loc 1 32 9 is_stmt 1 view .LVU89
+  32:Core/Src/main.c ****             delay(160000); // Антидребезг
+ 288              		.loc 1 32 12 is_stmt 0 view .LVU90
+ 289 00e2 002D     		cmp	r5, #0
+ 290 00e4 97D1     		bne	.L20
+ 291              	.L6:
+  45:Core/Src/main.c **** 
+ 292              		.loc 1 45 9 is_stmt 1 view .LVU91
+ 293              	.LVL20:
+  48:Core/Src/main.c ****             GPIOB->MODER &= ~(3U << (2 * 2));
+ 294              		.loc 1 48 9 view .LVU92
+  48:Core/Src/main.c ****             GPIOB->MODER &= ~(3U << (2 * 2));
+ 295              		.loc 1 48 12 is_stmt 0 view .LVU93
+ 296 00e6 002F     		cmp	r7, #0
+ 297 00e8 B3D0     		beq	.L7
+  49:Core/Src/main.c ****             GPIOB->MODER |=  (1U << (2 * 2)); // Выход
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 8
+
+
+ 298              		.loc 1 49 13 is_stmt 1 view .LVU94
+  49:Core/Src/main.c ****             GPIOB->MODER |=  (1U << (2 * 2)); // Выход
+ 299              		.loc 1 49 18 is_stmt 0 view .LVU95
+ 300 00ea 114B     		ldr	r3, .L22+4
+ 301 00ec 1A68     		ldr	r2, [r3]
+  49:Core/Src/main.c ****             GPIOB->MODER |=  (1U << (2 * 2)); // Выход
+ 302              		.loc 1 49 26 view .LVU96
+ 303 00ee 22F03002 		bic	r2, r2, #48
+ 304 00f2 1A60     		str	r2, [r3]
+  50:Core/Src/main.c ****             GPIOB->ODR   |=  (1U << 2);       // Светодиод 1 горит
+ 305              		.loc 1 50 13 is_stmt 1 view .LVU97
+  50:Core/Src/main.c ****             GPIOB->ODR   |=  (1U << 2);       // Светодиод 1 горит
+ 306              		.loc 1 50 18 is_stmt 0 view .LVU98
+ 307 00f4 1A68     		ldr	r2, [r3]
+  50:Core/Src/main.c ****             GPIOB->ODR   |=  (1U << 2);       // Светодиод 1 горит
+ 308              		.loc 1 50 26 view .LVU99
+ 309 00f6 42F01002 		orr	r2, r2, #16
+ 310 00fa 1A60     		str	r2, [r3]
+  51:Core/Src/main.c ****         } else {
+ 311              		.loc 1 51 13 is_stmt 1 view .LVU100
+  51:Core/Src/main.c ****         } else {
+ 312              		.loc 1 51 18 is_stmt 0 view .LVU101
+ 313 00fc 5A69     		ldr	r2, [r3, #20]
+  51:Core/Src/main.c ****         } else {
+ 314              		.loc 1 51 26 view .LVU102
+ 315 00fe 42F00402 		orr	r2, r2, #4
+ 316 0102 5A61     		str	r2, [r3, #20]
+ 317              	.L8:
+  60:Core/Src/main.c ****             uint8_t btn2_curr = (GPIOB->IDR & (1U << 5)) ? 1 : 0;
+ 318              		.loc 1 60 9 is_stmt 1 view .LVU103
+  60:Core/Src/main.c ****             uint8_t btn2_curr = (GPIOB->IDR & (1U << 5)) ? 1 : 0;
+ 319              		.loc 1 60 12 is_stmt 0 view .LVU104
+ 320 0104 B8F1000F 		cmp	r8, #0
+ 321 0108 D8D1     		bne	.L9
+ 322              	.LBB4:
+  61:Core/Src/main.c ****             if (btn2_last == 1 && btn2_curr == 0) { // Нажатие Кнопки 2
+ 323              		.loc 1 61 13 is_stmt 1 view .LVU105
+  61:Core/Src/main.c ****             if (btn2_last == 1 && btn2_curr == 0) { // Нажатие Кнопки 2
+ 324              		.loc 1 61 39 is_stmt 0 view .LVU106
+ 325 010a 094B     		ldr	r3, .L22+4
+ 326 010c 1D69     		ldr	r5, [r3, #16]
+  61:Core/Src/main.c ****             if (btn2_last == 1 && btn2_curr == 0) { // Нажатие Кнопки 2
+ 327              		.loc 1 61 62 view .LVU107
+ 328 010e 05F02002 		and	r2, r5, #32
+ 329 0112 C5F34015 		ubfx	r5, r5, #5, #1
+ 330              	.LVL21:
+  62:Core/Src/main.c ****                 delay(160000); // Антидребезг
+ 331              		.loc 1 62 13 is_stmt 1 view .LVU108
+  62:Core/Src/main.c ****                 delay(160000); // Антидребезг
+ 332              		.loc 1 62 16 is_stmt 0 view .LVU109
+ 333 0116 002E     		cmp	r6, #0
+ 334 0118 A1D1     		bne	.L21
+  77:Core/Src/main.c ****         }
+ 335              		.loc 1 77 23 view .LVU110
+ 336 011a 2E46     		mov	r6, r5
+ 337              	.LVL22:
+  77:Core/Src/main.c ****         }
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 9
+
+
+ 338              		.loc 1 77 23 view .LVU111
+ 339 011c CEE7     		b	.L9
+ 340              	.LVL23:
+ 341              	.L15:
+  77:Core/Src/main.c ****         }
+ 342              		.loc 1 77 23 view .LVU112
+ 343 011e 2E46     		mov	r6, r5
+ 344              	.LVL24:
+  77:Core/Src/main.c ****         }
+ 345              		.loc 1 77 23 view .LVU113
+ 346 0120 CCE7     		b	.L9
+ 347              	.LVL25:
+ 348              	.L17:
+  77:Core/Src/main.c ****         }
+ 349              		.loc 1 77 23 view .LVU114
+ 350 0122 2E46     		mov	r6, r5
+ 351              	.LVL26:
+  77:Core/Src/main.c ****         }
+ 352              		.loc 1 77 23 view .LVU115
+ 353 0124 CAE7     		b	.L9
+ 354              	.LVL27:
+ 355              	.L18:
+  77:Core/Src/main.c ****         }
+ 356              		.loc 1 77 23 view .LVU116
+ 357 0126 2E46     		mov	r6, r5
+ 358              	.LVL28:
+  77:Core/Src/main.c ****         }
+ 359              		.loc 1 77 23 view .LVU117
+ 360 0128 C8E7     		b	.L9
+ 361              	.L23:
+ 362 012a 00BF     		.align	2
+ 363              	.L22:
+ 364 012c 00710200 		.word	160000
+ 365 0130 00040240 		.word	1073873920
+ 366 0134 CDCCCCCC 		.word	-858993459
+ 367              	.LBE4:
+ 368              	.LBE6:
+ 369              		.cfi_endproc
+ 370              	.LFE131:
+ 372              		.text
+ 373              	.Letext0:
+ 374              		.file 2 "D:/VUZovskoe/TsMPT/Tools/arm-none-eabi/include/machine/_default_types.h"
+ 375              		.file 3 "D:/VUZovskoe/TsMPT/Tools/arm-none-eabi/include/sys/_stdint.h"
+ 376              		.file 4 "CMSIS/Devices/STM32F4xx/Inc/STM32F429xx/stm32f429xx.h"
+ 377              		.file 5 "Core/Inc/init.h"
+ARM GAS  C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\aleks\AppData\Local\Temp\ccw2pOdE.s:21     .text.main:00000000 $t
-C:\Users\aleks\AppData\Local\Temp\ccw2pOdE.s:27     .text.main:00000000 main
+C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s:21     .text.delay:00000000 $t
+C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s:27     .text.delay:00000000 delay
+C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s:70     .text.main:00000000 $t
+C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s:76     .text.main:00000000 main
+C:\Users\aleks\AppData\Local\Temp\cc7gagW0.s:364    .text.main:0000012c $d
 
-NO UNDEFINED SYMBOLS
+UNDEFINED SYMBOLS
+System_Init
