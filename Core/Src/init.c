@@ -1,20 +1,19 @@
 #include <stdint.h>
 #include "init.h"
+#include "main.h"
 
 void System_Init(void) {
-    // 1. Включаем тактирование порта GPIOB (бит 1 в RCC_AHB1ENR по адресу 0x40023830)
-    *(volatile uint32_t *)0x40023830UL |= (1U << 1);
+    // 1. Включаем тактирование GPIOB
+    RCC_AHB1ENR |= RCC_GPIOB_EN;
 
-    // 2. Сбрасываем настройки MODER для PB2, PB5, PB6, PB8, PB9 (адрес 0x40020400)
-    *(volatile uint32_t *)0x40020400UL &= ~((3U << 4) | (3U << 10) | (3U << 12) | (3U << 16) | (3U << 18));
+    // 2. Сбрасываем и настраиваем MODER (PB2, PB5 - входы; PB6, PB8, PB9 - выходы)
+    GPIOB_MODER &= ~(MODER_PB2_MASK | MODER_PB5_MASK | MODER_PB6_MASK | MODER_PB8_MASK | MODER_PB9_MASK);
+    GPIOB_MODER |=  (MODER_PB6_OUT  | MODER_PB8_OUT  | MODER_PB9_OUT);
 
-    // 3. Настраиваем PB6, PB8, PB9 на выход (01 в соответствующие пары бит MODER)
-    *(volatile uint32_t *)0x40020400UL |= ((1U << 12) | (1U << 16) | (1U << 18));
+    // 3. Включаем подтяжку Pull-Up для PB2 и PB5
+    GPIOB_PUPDR &= ~(PUPDR_PB2_MASK | PUPDR_PB5_MASK);
+    GPIOB_PUPDR |=  (PUPDR_PB2_PU   | PUPDR_PB5_PU);
 
-    // 4. Включаем внутреннюю подтяжку Pull-Up (01) для кнопок PB2 и PB5 в PUPDR (адрес 0x4002040C)
-    *(volatile uint32_t *)0x4002040CUL &= ~((3U << 4) | (3U << 10));
-    *(volatile uint32_t *)0x4002040CUL |=  ((1U << 4) | (1U << 10));
-
-    // 5. Гасим светодиоды при старте в ODR (адрес 0x40020414)
-    *(volatile uint32_t *)0x40020414UL &= ~((1U << 2) | (1U << 6) | (1U << 8) | (1U << 9));
+    // 4. Гасим все светодиоды при старте
+    GPIOB_ODR &= ~(PIN_PB2 | LEDS_234_MASK);
 }
